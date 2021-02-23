@@ -1,0 +1,63 @@
+# Project-Semester-5
+*DrownButton dengan objek
+import 'package:flutter/material.dart';
+
+void main() => runApp(MyApp());
+
+class MyApp extends StatelessWidget {
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(title: Text('Nurcahyo - 5SIA1')),
+        body: Nurcahyo(),
+      ),
+    );
+  }
+}
+
+class Nurcahyo extends StatefulWidget {
+  _NurcahyoState createState() => _NurcahyoState();
+}
+
+class _NurcahyoState extends State<Nurcahyo> {
+  String _selected;
+  String hasil;
+
+  onHitung() {
+    setState(() {
+      hasil = "Test Tombol";
+    });
+  }
+
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.all(20.0),
+      child: Column(
+        children: [
+          TextField(
+            decoration: InputDecoration(labelText: "Input Nama Pelanggan"),
+          ),          
+          DropdownButton(
+              value: _selected,
+              hint: Text('pilih menu'),
+              items: ['nasgor', 'bakso', 'lontong'].map((choise) {
+                return DropdownMenuItem(
+                  child: Text(choise),
+                  value: choise,
+                );
+              }).toList(),
+              onChanged: (value) {
+                setState(() {
+                  _selected = _selected;
+                });
+              }),
+          RaisedButton(
+            chiText("Hitung"),
+            onPressed: onHitung,
+          ),
+          Text("$hasil"),
+        ],
+      ),
+    );
+  }
+}
